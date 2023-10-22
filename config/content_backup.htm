@@ -1,6 +1,6 @@
 <h1>About</h1>
 <p><a href="https://github.com/mdecycu/cmsite"> https://github.com/mdecycu/cmsite </a></p>
-<!-- pagebreak -->
+<p><!-- pagebreak --></p>
 <h1>w5</h1>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">// 包含標準輸出入程式庫的標頭文件
 // https://blog.csdn.net/weixin_38468077/article/details/101069365
@@ -53,6 +53,7 @@ int main() {
 <p></p>
 <h1>w6</h1>
 <p><!-- pagebreak --></p>
+<h1>ANSIC</h1>
 <h2>C Basic Declarations and Expressions: Exercise-3 with Solution</h2>
 <p>#include &lt;stdio.h&gt; <br/> int main() <br/> {<br/> printf("######\n");<br/> printf("#\n");<br/> printf("#\n");<br/> printf("#####\n");<br/> printf("#\n");<br/> printf("#\n");<br/> printf("#\n");</p>
 <p>return(0);<br/>}</p>
@@ -61,9 +62,8 @@ int main() {
 <p>./a.out</p>
 <p></p>
 <p>######<br/>#<br/>#<br/>#####<br/>#<br/>#<br/>#</p>
-<p><!-- pagebreak --></p>
-<h2><strong>USA Flag</strong></h2>
-<pre>// https://en.wikipedia.org/wiki/Flag_of_the_United_States
+<p><!-- pagebreak --></p><h2>USA Flag</h2>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">// https://en.wikipedia.org/wiki/Flag_of_the_United_States
 // https://www.britannica.com/topic/flag-of-the-United-States-of-America
 // 隞乩�讠�箏嗾銋舘�蝜芾ˊ摰峕�鞟�蝢𤾸�见�𧢲��, 隢衤耨�㺿銝见�堒�笔�讠Ⅳ, 隞文�嗥鼓�枂甇�Ⅱ��蝢𤾸�见�𧢲��
 #include &lt;stdio.h&gt;
@@ -146,7 +146,81 @@ void draw_star(gdImagePtr img, int x, int y, int size, int color) {
 
     // Fill the star with white color
     gdImageFilledPolygon(img, points, 10, color);
-}<br/><br/><br/>cc gd_ex1.c -lgd -lm<br/>./a.out<br/><img alt="" height="400" src="/images/usa_flag.png" width="758"/></pre><h1>Brython</h1>
+}</pre>
+<pre><br/><br/><br/>cc gd_ex1.c -lgd -lm<br/>./a.out<br/><img alt="" height="400" src="/images/usa_flag.png" width="758"/></pre>
+<!-- pagebreak -->
+<h2>ROC Flag</h2>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">// https://en.wikipedia.org/wiki/Flag_of_the_Republic_of_China
+// cc roc_flag.c -lgd -lm to link with gd and math library
+// https://www.rapidtables.com/web/color/RGB_Color.html
+// 撟曆�訫耦����𡑒𠧧���鼓��𣇉毀蝧�
+// 隞乩�� gd 蝜芸�𣇉�见�誩�𡑒岫�𧞄�枂 ROC ��𧢲��, 隢𧢲覔��帋�见�㛖�见�誩�批捆摰峕�𣂼�𣬚�𣬚���𧢲�㛖鼓���
+#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+
+void draw_roc_flag(gdImagePtr img);
+void draw_white_sun(gdImagePtr img, int x, int y, int size, int color);
+
+int main() {
+    // width 3: height 2
+    int width = 1200;
+    int height = (int)(width*2.0 / 3.0);
+
+    gdImagePtr img = gdImageCreateTrueColor(width, height);
+    gdImageAlphaBlending(img, 0);
+
+    draw_roc_flag(img);
+
+    FILE *outputFile = fopen("./../images/roc_flag1.png", "wb");
+    if (outputFile == NULL) {
+        fprintf(stderr, "Error opening the output file.\n");
+        return 1;
+    }
+    gdImagePngEx(img, outputFile, 9);
+    fclose(outputFile);
+    gdImageDestroy(img);
+    return 0;
+}
+
+void draw_roc_flag(gdImagePtr img) {
+    int width = gdImageSX(img);
+    int height = gdImageSY(img);
+    int red, white, blue;
+    int center_x = (int)(width/4);
+    int center_y = (int)(height/4);
+    int sun_radius = (int)(width/8);
+    // Colors for the flag
+    red = gdImageColorAllocate(img, 242, 0, 0); // Red color
+    white = gdImageColorAllocate(img, 255, 255, 255); // White stripes
+    blue = gdImageColorAllocate(img, 0, 41, 204); // Blue
+    // red rectangle area
+    gdImageFilledRectangle(img, 0, 0, width, height, red);
+    // blue rectangle area
+    gdImageFilledRectangle(img, 0, 0, (int)(width/2.0), (int)(height/2.0), blue);
+    // �𤌍��滚���𧞄�枂��鍦予�蒾�𠯫��頛芸�梶凒蝺�, 隢见�𡑒岫閮��埈�����暺𧼮漣璅坔�峕�𣂼�𧢲�㛖鼓���
+    draw_white_sun(img, center_x, center_y, sun_radius, white);
+}
+
+void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, int color) {
+    float angle = 0;
+    int fromX, fromY;
+    int toX, toY;
+    for (int i=0; i&lt;24; i++){
+        angle += 5*M_PI*2/12;
+        //printf("%.3f", angle);
+        toX = center_x + cos(angle)*sun_radius;
+        toY = center_y + sin(angle)*sun_radius;
+        // �蘨��� i �� 0 ��蝘餃�訫� toX, toY, �園�㗛�賡�脰�𣬚凒蝺𡁶鼓���
+        if (i!=0){
+            gdImageLine(img, fromX, fromY, toX, toY, color);
+        }
+        fromX = toX;
+        fromY = toY;
+   }
+}</pre>
+<pre>cc gd_ex2.c -lgd -lm<br/>./a.out</pre>
+<p><img alt="" height="400" src="/images/roc_flag1.png" width="599"/></p><h1>Brython</h1>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
 <h4>Examples:</h4>
 <p style="padding-left: 30px;"><a href="https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d">https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d</a></p>
