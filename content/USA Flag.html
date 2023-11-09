@@ -2,7 +2,7 @@
         <head>
         <title>cmsite</title>
         <meta charset="utf-8">
-<meta property="head" content="H1">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -142,61 +142,93 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">About << <a href='About.html'>Previous</a> <a href='ANSIC.html'>Next</a> >> ANSIC<br /><h1>w5</h1>
-<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">// 包含標準輸出入程式庫的標頭文件
-// https://blog.csdn.net/weixin_38468077/article/details/101069365
-// http://www.gnuplot.info/demo/
-// https://github.com/sysprog21/rv32emu
-// https://github.com/sysprog21/semu 
-// https://docs.google.com/presentation/d/14N0cWG2SnBSqhc2cLF0_2VerB9FF8JN3
-// https://cs61c.org/fa23/
-// https://greenteapress.com/wp/think-python-2e/
-// https://github.com/ecalvadi/c99-examples
-// https://github.com/gouravthakur39/beginners-C-program-examples
-// https://github.com/ergenekonyigit/Numerical-Analysis-Examples
-// https://www.che.ncku.edu.tw/facultyweb/changct/html/teaching/CPPandMATLAB/Past/pdf%20Files/Chap02-Ling.pdf
-// https://gteceducation.com.sg/Brochures/PROGRAMMING/C%20PROGRAMMING%20FULL.pdf
-// https://jsommers.github.io/cbook/cbook.pdf
-// https://jsommers.github.io/cbook/index.html
-// http://student.itee.uq.edu.au/courses/csse2310/CProgrammingNotes.pdf
-// http://cslibrary.stanford.edu/101/EssentialC.pdf
-// https://publications.gbdirect.co.uk/c_book/
-// https://www.fossil-scm.org/fossil-book/doc/2ndEdition/fossilbook.pdf
-// ***** execute on replit 
-// cd downloads
-// cc gnuplot_ex1.c -o gnuplot_ex1
-// ./gnuplot_ex1
+    <div id="tipue_search_content">ROC Flag練習 << <a href='ROC Flag練習.html'>Previous</a> <a href='ROC Flag.html'>Next</a> >> ROC Flag<br /><h1>USA Flag</h1>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">// https://en.wikipedia.org/wiki/Flag_of_the_United_States
+// https://www.britannica.com/topic/flag-of-the-United-States-of-America
+// 隞乩�讠�箏嗾銋舘�蝜芾ˊ摰峕�鞟�蝢𤾸�见�𧢲��, 隢衤耨�㺿銝见�堒�笔�讠Ⅳ, 隞文�嗥鼓�枂甇�Ⅱ��蝢𤾸�见�𧢲��
 #include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
 
-// 主函式
+void draw_usa_flag(gdImagePtr img);
+void draw_star(gdImagePtr img, int x, int y, int size, int color);
+
 int main() {
-    // Start a Gnuplot process using popen
-    FILE *gnuplotPipe = popen("gnuplot -persistent", "w");
-    if (!gnuplotPipe) {
-        fprintf(stderr, "Failed to start Gnuplot.\n");
+    int width = 800;
+    int height = (int)(width / 1.9);
+
+    gdImagePtr img = gdImageCreateTrueColor(width, height);
+    gdImageAlphaBlending(img, 0);
+
+    draw_usa_flag(img);
+
+    FILE *outputFile = fopen("./../images/usa_flag.png", "wb");
+    if (outputFile == NULL) {
+        fprintf(stderr, "Error opening the output file.\n");
         return 1;
     }
 
-    // Use Gnuplot plotting commands, specify font and output as PNG
-    fprintf(gnuplotPipe, "set terminal png font 'default,10' size 800,400\n");
-    fprintf(gnuplotPipe, "set output './../images/gnuplot_ex1.png'\n");
-    fprintf(gnuplotPipe, "plot sin(x)");
-    // Close popen
-    pclose(gnuplotPipe);
+    gdImagePngEx(img, outputFile, 9);
+    fclose(outputFile);
+    gdImageDestroy(img);
 
     return 0;
+}
+
+void draw_usa_flag(gdImagePtr img) {
+    int width = gdImageSX(img);
+    int height = gdImageSY(img);
+    int red, white, blue;
+    // Colors for the flag
+    red = gdImageColorAllocate(img, 178, 34, 52); // Red stripes
+    white = gdImageColorAllocate(img, 255, 255, 255); // White stripes
+    blue = gdImageColorAllocate(img, 60, 59, 110); // Blue field
+
+    int stripe_height = height / 13;
+    int stripe_width = width;
+    int star_size = (int)(0.0308 * height); // Corrected star size (half the original size)
+
+    for (int y = 0; y &lt; height; y += stripe_height) {
+        if (y / stripe_height % 2 == 0) {
+            gdImageFilledRectangle(img, 0, y, stripe_width, y + stripe_height, red);
+        } else {
+            gdImageFilledRectangle(img, 0, y, stripe_width, y + stripe_height, white);
+        }
+    }
+
+    gdImageFilledRectangle(img, 0, 0, width * 2 / 5, stripe_height * 7, blue);
+
+    int star_spacing_x = (int)(0.063 * height); // Horizontal spacing between stars
+    int star_spacing_y = (int)(0.054 * height); // Vertical spacing between stars
+    int star_start_x = (int)(0.0616 * height); // Starting X position for stars
+    int star_start_y = (int)(0.0485 * height); // Starting Y position for stars
+
+    for (int row = 0; row &lt; 9; row++) {
+        int starsPerRow = (row % 2 == 0) ? 6 : 5;
+
+        for (int star = 0; star &lt; starsPerRow; star++) {
+            int x = star_start_x + star * star_spacing_x;
+            int y = star_start_y + row * star_spacing_y;
+            draw_star(img, x, y, star_size, white);
+        }
+    }
+}
+
+void draw_star(gdImagePtr img, int x, int y, int size, int color) {
+    gdPoint points[10];
+
+    for (int i = 0; i &lt; 10; i++) {
+        double angle = M_PI / 2 + i * 2 * M_PI / 10;
+        int radius = (i % 2 == 0) ? size : size / 2;
+        points[i].x = x + radius * cos(angle);
+        points[i].y = y + radius * sin(angle);
+    }
+
+    // Fill the star with white color
+    gdImageFilledPolygon(img, points, 10, color);
 }</pre>
-<p>clear</p>
-<p>cd downloads</p>
-<p>cc gnuply_ex1.c</p>
-<p>./a.out</p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p><img alt="" height="200" src="./../images/gnuplot_ex1.png" width="400"/></p>
-<p></p>
-<p></p><br />About << <a href='About.html'>Previous</a> <a href='ANSIC.html'>Next</a> >> ANSIC</div>
+<pre><br/><br/><br/>cc gd_ex1.c -lgd -lm<br/>./a.out<br/><img alt="" height="400" src="./../images/usa_flag.png" width="758"/></pre>
+<p><!-- pagebreak --></p><br />ROC Flag練習 << <a href='ROC Flag練習.html'>Previous</a> <a href='ROC Flag.html'>Next</a> >> ROC Flag</div>
         
     <!-- footer -->
       <div class="container">
