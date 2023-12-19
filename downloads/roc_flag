@@ -1,0 +1,122 @@
+// https://en.wikipedia.org/wiki/Flag_of_the_Republic_of_China
+// �扳錇�典�𧢲�堒���鞈���: https://www.moi.gov.tw/cp.aspx?n=10621
+// cc roc_flag_in_gd.c -lgd -lm to link with gd and math library
+// https://www.rapidtables.com/web/color/RGB_Color.html
+// 撟曆�訫耦����𡑒𠧧���鼓��𣇉毀蝧�
+// 隞乩�� gd 蝜芸�𣇉�见�誩�𡑒岫�𧞄�枂 ROC ��𧢲��, 隢𧢲覔��帋�见�㛖�见�誩�批捆摰峕�𣂼�𣬚�𣬚���𧢲�㛖鼓���
+#include <stdio.h>
+#include <gd.h>
+#include <math.h>
+
+void draw_roc_flag(gdImagePtr img);
+void draw_white_sun(gdImagePtr img, int x, int y, int size, int color);
+
+int main() {
+    // width 3: height 2
+    int width = 1200;
+    // ��𧢲�烾𩑈撖祆�𠉛�� 3:2
+    int height = (int)(width*2.0 / 3.0);
+
+    gdImagePtr img = gdImageCreateTrueColor(width, height);
+    gdImageAlphaBlending(img, 0);
+
+    draw_roc_flag(img);
+
+    FILE *outputFile = fopen("./../images/roc_flag_in_gd.png", "wb");
+    if (outputFile == NULL) {
+        fprintf(stderr, "Error opening the output file.\n");
+        return 1;
+    }
+    gdImagePngEx(img, outputFile, 9);
+    fclose(outputFile);
+    gdImageDestroy(img);
+    return 0;
+}
+
+void draw_roc_flag(gdImagePtr img) {
+    int width = gdImageSX(img);
+    int height = gdImageSY(img);
+    int red, white, blue;
+    // �蒾�𠯫雿齿䲰��鍦予�𢒰蝛齿迤銝剖亢, ��䭾迨銝剖�暺𧼮漣璅嗵�粹𩑈撖砍� 1/4 ���
+    int center_x = (int)(width/4);
+    int center_y = (int)(height/4);
+    // gdImageFilledEllipse ��隞仿𩑈撖祆䲮��𤑳� diameter 雿𨅯��
+    // �眏�䲰銝剖亢�蒾�𠯫��枏耦����𠰴�𤑳�粹�鍦予撖砍漲�� 1/8
+    // ��䭾迨銝剖亢�蒾�𠯫��枏耦���凒敺𤑳�粹�鍦予撖砍漲�� 1/4, 銋笔停�糓��𧢲�堒祝摨衣� 1/8
+    // �䔶�𠉛蒾�𠯫��鈭屸�枏�㕑�垍�憭硋�滚�枏耦�嗅�𠰴�睲��糓��𧢲�堒祝摨衣�1/8
+    int sun_radius = (int)(width/8);
+    // 銝剖亢�蒾�𠯫��枏耦���凒敺𤑳�㗇䲰��鈭屸�枏�㕑�鍦�硋�滚�枏耦����𠰴��
+    int white_circle_dia = sun_radius;
+    // 銝剖亢��滩𠧧��枏耦��𠰴�𤑳�箔葉憭桃蒾�𠯫�� 1��� 2/15
+    int blue_circle_dia = white_circle_dia +  white_circle_dia*2/15;
+    // �覔��� https://www.moi.gov.tw/cp.aspx?n=10621 閮�摰𡁜�𧢲�𦯀�厩車憿讛𠧧��
+    red = gdImageColorAllocate(img, 255, 0, 0); // 蝝��𠧧
+    white = gdImageColorAllocate(img, 255, 255, 255); // �蒾�𠧧
+    blue = gdImageColorAllocate(img, 0, 0, 149); // ��滩𠧧
+    // �覔��𡁶𧞄撣�憭批�誩�𦯀�羓��𠧧�𩑈�䲮敶Ｗ����
+    gdImageFilledRectangle(img, 0, 0, width, height, red);
+    // ��鍦予�𢒰蝛滨�箸㟲�𢒰��𧢲�㛖� 1/4, 銋�糓�繧�鍂�𩑈�䲮敶Ｗ�𡑒𠧧
+    gdImageFilledRectangle(img, 0, 0, (int)(width/2.0), (int)(height/2.0), blue);
+    // ��身瘜蓥誑憛怨𠧧�𧞄�枂�剖�讠蒾�𠧧����𡃏𪃸敶�
+    draw_white_sun(img, center_x, center_y, sun_radius, white);
+    // �⏚�鍂銝��贝�滩𠧧憭批�栞��蒾�𠧧撠誩�梶𧞄�枂��滩𠧧�兛��
+    gdImageFilledEllipse(img, center_x, center_y, blue_circle_dia, blue_circle_dia, blue);
+    gdImageFilledEllipse(img, center_x, center_y, white_circle_dia, white_circle_dia, white);
+
+}
+
+void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, int color) {
+    // M_PI 憭批�誩�𡁶儔�䲰 math.h 璅䠷�瑼𥪯葉, ��删�箔�㕑�鍦遆�彍銝剜繧�鍂敺穃漲�箄�鍦漲�鱓雿�
+    // ��䭾迨摰𡁶儔撠��鍦漲頧厩�箏�穃漲��頧㗇�𥡝�𦠜彍�� deg, 閫鍦漲�潔�䀝�� deg 撠勗虾頧厩�箏�穃漲
+    float deg = M_PI/180;
+    // �覔��𡁜�鈭屸�枏�㕑�垍�瘥譍�撠𤥁�垍�閫鍦漲�� 15 摨�, 瘙��枂�嗅�齿�厩凒閫雴�㕑�鍦耦���𡖂銝�閫鍦漲�� 75 摨�
+    // 瘙��枂��鈭屸�枏�㕑�雴葉隞颱��𪃸敶Ｙ� small radius, 銋笔停�糓�𪃸敶Ｙ��𡖂銝��见�齿�匧�誩�梶���𠰴�穃之撠�
+    float sr = sun_radius/tan(75*deg);
+    int ax, ay, bx, by, dx, dy, ex, ey;
+    gdPoint points[4];
+    /* �銁憛𦯀�𠰴�鈭屸�枏�㕑�雴葉���鱓銝��𪃸敶Ｗ���煺�见��, ��誑摨扳�䠷�䂿𧞄蝺𡁏葫閰行糓�炏甇�Ⅱ
+    ax = center_x;
+    ay = center_y - sun_radius;
+    bx = center_x - sun_radius*tan(15*deg);
+    by = center_y;
+    ex = center_x;
+    ey = center_y + sun_radius;
+    dx = center_x + sun_radius*tan(15*deg);
+    dy = center_y;
+    // AB
+    gdImageLine(img, ax, ay, bx, by, color);
+    // BE
+    gdImageLine(img, bx, by, ex, ey, color);
+    // ED
+    gdImageLine(img, ex, ey, dx, dy, color);
+    // DA
+    gdImageLine(img, dx, dy, ax, ay, color);
+    */
+    ax = center_x;
+    ay = center_y - sun_radius;
+    bx = center_x - sun_radius*tan(15*deg);
+    by = center_y;
+    ex = center_x;
+    ey = center_y + sun_radius;
+    dx = center_x + sun_radius*tan(15*deg);
+    dy = center_y;
+    // 蝣箏�𡁜鱓銝��𪃸敶Ｗ���毺�憛𡑒𠧧甇�Ⅱ敺�, �⏚�鍂餈游���𤩺活頧匧�� 30 摨�, 蝮賢�梯�匧�剜活�朖�虾憛𦯀�𠰴�鈭屸�枏�㕑�鍦����
+    for (int i=1;i<=6;i++){
+    // A
+    points[0].x = ax+sun_radius*sin(30*deg*i);
+    points[0].y = ay+sun_radius-sun_radius*cos(30*deg*i);
+    // B
+    points[1].x = bx+sr-sr*cos(30*deg*i);
+    points[1].y = by-sr*sin(30*deg*i);
+    // E
+    points[2].x = ex-sun_radius*sin(30*deg*i);
+    points[2].y = ey-(sun_radius-sun_radius*cos(30*deg*i));
+    // D
+    points[3].x = dx-(sr-sr*cos(30*deg*i));
+    points[3].y = dy+sr*sin(30*deg*i);
+    // 撠滩𪃸敶Ｗ���毺���滚�𡑒𠧧
+    gdImageFilledPolygon(img, points, 4, color);
+    // �銁�𪃸敶Ｗ���笔�硋�滨𧞄蝺�, ��𡒊Ⅱ����朞𪃸敶Ｙ����
+    gdImagePolygon(img, points, 4, color);
+    }
+}
