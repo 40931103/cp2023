@@ -103,7 +103,36 @@ int main() {
 <p><code>}</code>: The closing curly brace marks the end of the main function's body.</p>
 </li>
 </ol>
-<p><!-- pagebreak --></p><h1>w6</h1>
+<p></p>
+<h2><span>使用者輸入兩個整數後相加的 C 程式範例</span></h2>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* Read in two integers , add them and display the answer */
+#define _CRT_SECURE_NO_WARNINGS
+#include&lt;stdio.h&gt;
+int main()
+{
+int this_is_a_number1, this_is_a_number2, total;
+printf("Please enter an integer number:\n ");
+/* read number in */
+if (scanf("%d", &amp;this_is_a_number1) == 1) {
+      printf("%d", this_is_a_number1);
+    } else {
+        printf("Failed to read integer.\n");
+    }
+
+printf("You entered %d\n", this_is_a_number1);
+printf("Please enter another number: \n");
+if (scanf("%d", &amp;this_is_a_number2) == 1) {
+      printf("%d", this_is_a_number1);
+    } else {
+      printf("Failed to read integer.\n");
+    }
+printf("You entered %d\n", this_is_a_number2);
+total = this_is_a_number1 + this_is_a_number2;/* add two numbers */
+printf("total is %d\n", total);
+return 0;
+}
+</pre>
+<br/><br/><br/><!-- pagebreak --><h1>w6</h1>
 <h2>ROC Flag練習</h2>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">// https://en.wikipedia.org/wiki/Flag_of_the_Republic_of_China
 // 內政部國旗參考資料: https://www.moi.gov.tw/cp.aspx?n=10621
