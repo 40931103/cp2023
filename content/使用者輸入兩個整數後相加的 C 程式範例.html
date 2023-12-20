@@ -142,54 +142,35 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">ANSIC << <a href='ANSIC.html'>Previous</a> <a href='使用者輸入兩個整數後相加的 C 程式範例.html'>Next</a> >> 使用者輸入兩個整數後相加的 C 程式範例<br /><h1>C Basic Declarations and Expressions: Exercise-3 with Solution</h1>
-<p>#include &lt;stdio.h&gt; <br/> int main() <br/> {<br/> printf("######\n");<br/> printf("#\n");<br/> printf("#\n");<br/> printf("#####\n");<br/> printf("#\n");<br/> printf("#\n");<br/> printf("#\n");</p>
-<p>return(0);<br/>}</p>
-<p></p>
-<p>cc gnuply_2.c</p>
-<p>./a.out</p>
-<p></p>
-<p>######<br/>#<br/>#<br/>#####<br/>#<br/>#<br/>#</p>
-<ol>
-<li>
-<p><code>#include &lt;stdio.h&gt;</code>: This line includes the standard input/output library, which is necessary to use functions like <code>printf</code>.</p>
-</li>
-<li>
-<p><code>int main()</code>: This line defines the <code>main</code> function, which is the entry point of the program. The <code>int</code> before <code>main()</code> indicates that the function returns an integer.</p>
-</li>
-<li>
-<p><code>{</code>: The opening curly brace marks the beginning of the main function's body.</p>
-</li>
-<li>
-<p><code>printf("######\n");</code>: This line uses the <code>printf</code> function to print "######" to the standard output (typically the console). The <code>\n</code> is an escape sequence for a newline character, which moves the cursor to the next line.</p>
-</li>
-<li>
-<p><code>printf("#\n");</code>: This line prints a single "#" character followed by a newline.</p>
-</li>
-<li>
-<p><code>printf("#\n");</code>: Another line that prints a single "#" character followed by a newline.</p>
-</li>
-<li>
-<p><code>printf("#####\n");</code>: This line prints "#####" followed by a newline, creating a row of hashtags.</p>
-</li>
-<li>
-<p><code>printf("#\n");</code>: Another line that prints a single "#" character followed by a newline.</p>
-</li>
-<li>
-<p><code>printf("#\n");</code>: Another line that prints a single "#" character followed by a newline.</p>
-</li>
-<li>
-<p><code>printf("#\n");</code>: Another line that prints a single "#" character followed by a newline.</p>
-</li>
-<li>
-<p><code>return(0);</code>: This line is used to exit the <code>main</code> function and return the value <code>0</code>, indicating successful program execution to the operating system.</p>
-</li>
-<li>
-<p><code>}</code>: The closing curly brace marks the end of the main function's body.</p>
-</li>
-</ol>
-<p></p>
-<br />ANSIC << <a href='ANSIC.html'>Previous</a> <a href='使用者輸入兩個整數後相加的 C 程式範例.html'>Next</a> >> 使用者輸入兩個整數後相加的 C 程式範例</div>
+    <div id="tipue_search_content">C Basic Declarations and Expressions: Exercise-3 with Solution << <a href='C Basic Declarations and Expressions: Exercise-3 with Solution.html'>Previous</a> <a href='w6.html'>Next</a> >> w6<br /><h1>使用者輸入兩個整數後相加的 C 程式範例</h1>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* Read in two integers , add them and display the answer */
+#define _CRT_SECURE_NO_WARNINGS
+#include&lt;stdio.h&gt;
+int main()
+{
+int this_is_a_number1, this_is_a_number2, total;
+printf("Please enter an integer number:\n ");
+/* read number in */
+if (scanf("%d", &amp;this_is_a_number1) == 1) {
+      printf("%d", this_is_a_number1);
+    } else {
+        printf("Failed to read integer.\n");
+    }
+
+printf("You entered %d\n", this_is_a_number1);
+printf("Please enter another number: \n");
+if (scanf("%d", &amp;this_is_a_number2) == 1) {
+      printf("%d", this_is_a_number1);
+    } else {
+      printf("Failed to read integer.\n");
+    }
+printf("You entered %d\n", this_is_a_number2);
+total = this_is_a_number1 + this_is_a_number2;/* add two numbers */
+printf("total is %d\n", total);
+return 0;
+}
+</pre>
+<p>~/cp2023-1$ cd downloads<br/>~/cp2023-1/downloads$ cc add.c -lgd -lm<br/>~/cp2023-1/downloads$ ./a.out<br/>Please enter an integer number:<br/> 1<br/>1You entered 1<br/>Please enter another number: <br/>3<br/>1You entered 3<br/>total is 4<br/><br/><br/><!-- pagebreak --></p><br />C Basic Declarations and Expressions: Exercise-3 with Solution << <a href='C Basic Declarations and Expressions: Exercise-3 with Solution.html'>Previous</a> <a href='w6.html'>Next</a> >> w6</div>
         
     <!-- footer -->
       <div class="container">
