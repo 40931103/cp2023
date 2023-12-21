@@ -58,10 +58,23 @@ int main() {
 <p></p>
 <p></p><h1>ANSIC</h1>
 <h2>C Basic Declarations and Expressions: Exercise-3 with Solution</h2>
-<p>#include &lt;stdio.h&gt; <br/> int main() <br/> {<br/> printf("######\n");<br/> printf("#\n");<br/> printf("#\n");<br/> printf("#####\n");<br/> printf("#\n");<br/> printf("#\n");<br/> printf("#\n");</p>
-<p>return(0);<br/>}</p>
 <p></p>
-<p>cc gnuply_2.c</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+int main()
+{
+printf("######\n");
+printf("#\n");
+printf("#\n");
+printf("#####\n");
+printf("#\n");
+printf("#\n");
+printf("#\n");
+
+return(0);
+}
+
+</pre>
+<p><br/>cc gnuply_2.c</p>
 <p>./a.out</p>
 <p></p>
 <p>######<br/>#<br/>#<br/>#####<br/>#<br/>#<br/>#</p>
@@ -103,8 +116,7 @@ int main() {
 <p><code>}</code>: The closing curly brace marks the end of the main function's body.</p>
 </li>
 </ol>
-<p></p>
-<h2>使用者輸入兩個整數後相加的 C 程式範例</h2>
+<p></p><h2>使用者輸入兩個整數後相加的 C 程式範例</h2>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* Read in two integers , add them and display the answer */
 #define _CRT_SECURE_NO_WARNINGS
 #include&lt;stdio.h&gt;
@@ -134,13 +146,7 @@ return 0;
 </pre>
 <p>~/cp2023-1$ cd downloads<br/>~/cp2023-1/downloads$ cc add.c -lgd -lm<br/>~/cp2023-1/downloads$ ./a.out<br/>Please enter an integer number:<br/> 1<br/>1You entered 1<br/>Please enter another number: <br/>3<br/>1You entered 3<br/>total is 4<br/><br/><br/><!-- pagebreak --></p><h1>w6</h1>
 <h2>ROC Flag練習</h2>
-<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">// https://en.wikipedia.org/wiki/Flag_of_the_Republic_of_China
-// 內政部國旗參考資料: https://www.moi.gov.tw/cp.aspx?n=10621
-// cc roc_flag_in_gd.c -lgd -lm to link with gd and math library
-// https://www.rapidtables.com/web/color/RGB_Color.html
-// 幾何形狀著色與繪圖練習
-// 以下 gd 繪圖程式嘗試畫出 ROC 國旗, 請根據下列程式內容完成後續的國旗繪圖
-#include &lt;stdio.h&gt;
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
 
