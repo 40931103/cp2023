@@ -116,7 +116,9 @@ return(0);
 <p><code>}</code>: The closing curly brace marks the end of the main function's body.</p>
 </li>
 </ol>
-<p></p><h2>使用者輸入兩個整數後相加的 C 程式範例</h2>
+<p>影片點<a href="https://youtu.be/M1RxcH_Rn9c">這裡</a></p>
+<div class="winkVideoContainerClass"><video autoplay="autoplay" class="winkVideoClass" controls="controls" data-dirname="/cmsimde/static" data-varname="winkVideoData_w11_1a_1" height="630" muted="true" width="1008">
+<source src="/downloads/gnuply_2." type="video/mp4"/></video></div><h2>使用者輸入兩個整數後相加的 C 程式範例</h2>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* Read in two integers , add them and display the answer */
 #define _CRT_SECURE_NO_WARNINGS
 #include&lt;stdio.h&gt;
@@ -263,7 +265,10 @@ void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, 
     }
 }</pre>
 <p></p>
-<p><img alt="" height="400" src="/images/roc_flag_in_gd.png" width="599"/></p><h2>USA Flag</h2>
+<p><img alt="" height="400" src="/images/roc_flag_in_gd.png" width="599"/></p>
+<div class="winkVideoContainerClass">影片點<a href="https://youtu.be/2NmxzoKkYJA">這裡</a></div>
+<div class="winkVideoContainerClass"><video autoplay="autoplay" class="winkVideoClass" controls="controls" data-dirname="/cmsimde/static" data-varname="winkVideoData_w11_1a_1" height="630" muted="true" width="1008">
+<source src="/downloads/chinese.c" type="video/mp4"/></video></div><h2>USA Flag</h2>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
@@ -466,7 +471,9 @@ void draw_japan_flag(gdImagePtr img) {
 <p>cc japan.c -lgd -lm</p>
 <p>./a.out</p>
 <p><img alt="" height="200" src="/images/japan_flag.png" width="300"/><br/><br/></p>
-<p></p>
+<p>影片點<a href="https://youtu.be/kUIAWWDn8m4">這裡</a></p>
+<div class="winkVideoContainerClass"><video autoplay="autoplay" class="winkVideoClass" controls="controls" data-dirname="/cmsimde/static" data-varname="winkVideoData_w11_1a_1" height="630" muted="true" width="1008">
+<source src="/downloads/japan.c" type="video/mp4"/></video></div>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
@@ -695,8 +702,7 @@ void draw_uk_flag(gdImagePtr img) {
 <p>cd downloads</p>
 <p>cc uk.c -lgd -lm</p>
 <p>./a.out</p>
-<p><img alt="" height="150" src="/images/uk_flag.png" width="300"/></p>
-<h1>w8</h1><h1>w12</h1>
+<p><img alt="" height="150" src="/images/uk_flag.png" width="300"/></p><h1>w8</h1><h1>w12</h1>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
@@ -1045,8 +1051,259 @@ void draw_roc_flag(gdImagePtr img) {
 <div class="winkVideoContainerClass"></div>
 <div class="winkVideoContainerClass"></div>
 <div class="winkVideoContainerClass">wink點<a href="https://youtu.be/o8jatzvTNsk">這裡</a></div>
+<div class="winkVideoContainerClass"></div>
 <div class="winkVideoContainerClass"><video autoplay="autoplay" class="winkVideoClass" controls="controls" data-dirname="/cmsimde/static" data-varname="winkVideoData_w11_1a_1" height="630" muted="true" width="1008">
-<source src="/downloads/position" type="video/mp4"/></video></div><h1>Brython</h1>
+<source src="/downloads/position" type="video/mp4"/></video></div>
+<div class="winkVideoContainerClass"></div>
+<h1>w16</h1>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;gd.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+ 
+#define WIDTH 800
+#define HEIGHT 600
+#define SCALE 100
+ 
+//繪製電阻形狀
+void drawResistor(gdImagePtr im, int x1, int y, int width, int height) {
+    int startX = x1 ;
+    int endX = x1 + width ;
+ 
+    // 第一段直線向前走一段
+    gdImageLine(im, startX, y, startX + width / 4 , y, gdImageColorAllocate(im, 0, 0, 255));
+ 
+    // 向上45度
+    gdImageLine(im, startX + width / 4 , y, startX + width / 4 + height / 2 , y - height / 2, gdImageColorAllocate(im, 0, 0, 255));
+ 
+    // 向下90度
+    gdImageLine(im, startX + width / 4 + height / 2, y - height / 2 , startX + width / 4 + height / 2 + height , y + height / 2, gdImageColorAllocate(im, 0, 0, 255));
+ 
+    // 向上90度
+    gdImageLine(im, startX + width / 4 + height / 2 + height, y + height / 2, startX + width / 4 + height / 2 + 2 * height, y - height / 2, gdImageColorAllocate(im, 0, 0, 255));
+ 
+    // 向下90度
+    gdImageLine(im, startX + width / 4 + height / 2 + 2 * height , y - height / 2, startX + width / 4 + height / 2 + 3 * height , y + height / 2, gdImageColorAllocate(im, 0, 0, 255));
+ 
+    // 向上90度
+    gdImageLine(im, startX + width / 4 + height / 2 + 3 * height, y + height / 2 , startX + width / 4 + height / 2 + 4 * height, y - height / 2, gdImageColorAllocate(im, 0, 0, 255));
+ 
+    // 向下90度
+    gdImageLine(im, startX + width / 4 + height / 2 + 4 * height, y - height / 2, startX + width / 4 + height / 2 + 5 * height, y + height / 2, gdImageColorAllocate(im, 0, 0, 255));
+ 
+  // 向上45度
+    gdImageLine(im, startX + width / 4 + height / 2 + 5 * height, y + height / 2, startX + width / 4 + height / 2 + 5 * height + height / 2, y, gdImageColorAllocate(im, 0, 0, 255));
+ 
+  gdImageLine(im, startX + width / 4 + height / 2 + 5 * height + height / 2, y, startX + width / 4 + height / 2 + 5 * height + height / 2 +5 , y, gdImageColorAllocate(im, 0, 0, 255));
+ 
+ 
+  {
+    int startX = 100;
+  gdImageColorAllocate(im, 0, 0, 255);
+ 
+ 
+    // 第一段直線向前走一段
+    gdImageLine(im, startX, y, startX + width / 4 , y, gdImageColorAllocate(im, 0, 0, 255));
+ 
+    // 向上45度
+    gdImageLine(im, startX + width / 4 , y, startX + width / 4 + height / 2 , y - height / 2, gdImageColorAllocate(im, 0, 0, 255));
+ 
+    // 向下90度
+    gdImageLine(im, startX + width / 4 + height / 2, y - height / 2 , startX + width / 4 + height / 2 + height , y + height / 2, gdImageColorAllocate(im, 0, 0, 255));
+ 
+    // 向上90度
+    gdImageLine(im, startX + width / 4 + height / 2 + height, y + height / 2, startX + width / 4 + height / 2 + 2 * height, y - height / 2, gdImageColorAllocate(im, 0, 0, 255));
+ 
+    // 向下90度
+    gdImageLine(im, startX + width / 4 + height / 2 + 2 * height , y - height / 2, startX + width / 4 + height / 2 + 3 * height , y + height / 2, gdImageColorAllocate(im, 0, 0, 255));
+ 
+    // 向上45度
+      gdImageLine(im, startX + width / 4 + height / 2 + 3 * height, y + height / 2, startX + width / 4 + height / 2 + 3 * height + height / 2, y, gdImageColorAllocate(im, 0, 0, 255));
+ 
+    gdImageLine(im, startX + width / 4 + height / 2 + 3 * height + height / 2, y, startX + width / 4 + height / 2 + 3 * height + height / 2 +5 , y, gdImageColorAllocate(im, 0, 0, 255));
+ }
+ 
+  {
+    int startX = 585;
+  gdImageColorAllocate(im, 0, 0, 255);
+ 
+ 
+    // 第一段直線向前走一段
+    gdImageLine(im, startX, y, startX + width / 4 , y, gdImageColorAllocate(im, 0, 0, 255));
+ 
+    // 向上45度
+    gdImageLine(im, startX + width / 4 , y, startX + width / 4 + height / 2 , y - height / 2, gdImageColorAllocate(im, 0, 0, 255));
+ 
+    // 向下90度
+    gdImageLine(im, startX + width / 4 + height / 2, y - height / 2 , startX + width / 4 + height / 2 + height , y + height / 2, gdImageColorAllocate(im, 0, 0, 255));
+ 
+    // 向上90度
+    gdImageLine(im, startX + width / 4 + height / 2 + height, y + height / 2, startX + width / 4 + height / 2 + 2 * height, y - height / 2, gdImageColorAllocate(im, 0, 0, 255));
+    // 向下90度
+    gdImageLine(im, startX + width / 4 + height / 2 + 2 * height , y - height / 2, startX + width / 4 + height / 2 + 3 * height , y + height / 2, gdImageColorAllocate(im, 0, 0, 255));
+ 
+    // 向上45度
+      gdImageLine(im, startX + width / 4 + height / 2 + 3 * height, y + height / 2, startX + width / 4 + height / 2 + 3 * height + height / 2, y, gdImageColorAllocate(im, 0, 0, 255));
+ 
+    gdImageLine(im, startX + width / 4 + height / 2 + 3 * height + height / 2, y, startX + width / 4 + height / 2 + 3 * height + height / 2 +5 , y, gdImageColorAllocate(im, 0, 0, 255));
+ 
+    gdImageLine(im, 100, y +20, 700, y +20, gdImageColorAllocate(im, 0, 255, 0));
+ 
+}
+}
+ 
+int main() {
+    gdImagePtr im;
+    FILE *outputFile;
+ 
+    // 創建圖像物件
+    im = gdImageCreateTrueColor(WIDTH, HEIGHT);
+    if (im == NULL) {
+        fprintf(stderr, "Error creating GD image.\n");
+        return 1;
+    }
+ 
+    outputFile = fopen("1.png", "wb");
+    if (outputFile == NULL) {
+        fprintf(stderr, "Error opening the output file.\n");
+        return 1;
+    }
+ 
+    //配置顏色
+    int black, white, red, blue, green;
+ 
+    black = gdImageColorAllocate(im, 0, 0, 0);
+    white = gdImageColorAllocate(im, 255, 255, 255);
+    red = gdImageColorAllocate(im, 255, 0, 0);
+    blue = gdImageColorAllocate(im, 0, 0, 255);
+green = gdImageColorAllocate(im, 0, 255, 0);
+    gdImageFilledRectangle(im, 0, 0, WIDTH - 1, HEIGHT - 1, white);
+ 
+    // 繪製牆面
+    gdImageLine(im, SCALE, SCALE, SCALE, HEIGHT - SCALE, black);
+    gdImageLine(im, WIDTH - SCALE, SCALE, WIDTH - SCALE, HEIGHT - SCALE, black);
+ 
+   // 繪製彈簧(電阻)
+    drawResistor(im, WIDTH / 3 + SCALE / 2, HEIGHT / 2, SCALE / 2, SCALE / 4);
+ 
+    // 繪製質量（方形）
+    gdImageFilledRectangle(im, WIDTH / 3 - SCALE / 2, HEIGHT / 2 - SCALE / 2, WIDTH / 3 + SCALE / 2, HEIGHT / 2 + SCALE / 2, red);
+    gdImageFilledRectangle(im, WIDTH * 2 / 3 - SCALE / 2, HEIGHT / 2 - SCALE / 2, WIDTH * 2 / 3 + SCALE / 2, HEIGHT / 2 + SCALE / 2, red);
+ 
+  gdImageFilledRectangle(im, 100, HEIGHT +300, 700, HEIGHT /2 +49 , black);
+ 
+ 
+    //生成圖片
+    gdImagePng(im, outputFile);
+    fclose(outputFile);
+    gdImageDestroy(im);
+ 
+    return 0;
+}
+</pre>
+<p></p>
+<p><img alt="" height="225" src="/images/1.png" width="300"/></p>
+<p>wink點<a href="https://youtu.be/NHEYtuLHjvY">這裡</a></p>
+<div class="winkVideoContainerClass"><video autoplay="autoplay" class="winkVideoClass" controls="controls" data-dirname="/cmsimde/static" data-varname="winkVideoData_w11_1a_1" height="630" muted="true" width="1008">
+<source src="/downloads/w16a" type="video/mp4"/></video></div>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+ 
+#define TIME_STEP 0.01 // 時間步長
+#define SIMULATION_TIME 10.0 // 模擬時間
+ 
+// 物體參數
+#define m1 2.0
+#define m2 3.0
+#define k1 0.5
+#define k2 1.0
+#define k3 1.5
+#define c1 0.25
+#define c2 0.33
+#define c3 0.5
+#define X1_initial 1.0
+#define X2_initial -0.5
+#define V0 0.0
+ 
+// 計算阻尼力
+double dampingForce(double c, double v) {
+    return -c * v;
+}
+ 
+// 模擬物體運動
+void simulateMotion() {
+  double X1 = X1_initial;
+  double X2 = X2_initial;
+  double V1 = V0;
+  double V2 = V0;
+ 
+  FILE *fp;
+  fp = fopen("motion_data.txt", "w");
+ 
+  for (double t = 0; t &lt;= SIMULATION_TIME; t += TIME_STEP) {
+  double F1 = -k1 * (X1 - 0) - c1 * (V1 - 0); // 第一個物體受到的合力
+  double F2 = -k2 * (X2 - X1) - c2 * (V2 - V1); // 第二個物體受到的合力
+  double F3 = -k3 * (X2 - 0) - c3 * (V2 - 0); // 第二個物體受到的合力
+ 
+  double a1 = F1 / m1; // 第一個物體的加速度
+  double a2 = F2 / m2; // 第二個物體的加速度
+ 
+// 更新速度和位置
+   V1 += a1 * TIME_STEP;
+   V2 += a2 * TIME_STEP;
+ 
+  X1 += V1 * TIME_STEP;
+  X2 += V2 * TIME_STEP;
+ 
+// 在文件寫入時紀錄 m1 和 m2 的位置和速度數據
+  fprintf(fp, "%lf %lf %lf %lf %lf\n", t, X1, X2, V1, V2);
+    }
+ 
+ 
+  fclose(fp);
+}
+ 
+int main() {
+    simulateMotion();
+    return 0;
+}
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+#include &lt;stdio.h&gt;
+ 
+int main() {
+    FILE *gnuplotPipe = popen("gnuplot", "w");
+    if (gnuplotPipe) {
+        fprintf(gnuplotPipe, "set terminal png\n");
+        fprintf(gnuplotPipe, "set output 'motion_plot.png'\n");
+        fprintf(gnuplotPipe, "set xlabel 'Time'\n");
+        fprintf(gnuplotPipe, "set ylabel 'Position / Velocity'\n");
+        fprintf(gnuplotPipe, "plot 'motion_data.txt' using 1:2 with lines title 'm1 position', 'motion_data.txt' using 1:3 with lines title 'm2 position', 'motion_data.txt' using 1:4 with lines title 'm1 velocity', 'motion_data.txt' using 1:5 with lines title 'm2 velocity'\n");
+        fprintf(gnuplotPipe, "exit\n");
+        fflush(gnuplotPipe);
+        pclose(gnuplotPipe);
+    } else {
+        printf("Error opening pipe to Gnuplot.\n");
+    }
+    return 0;
+}</pre>
+<p></p>
+<p><img alt="" height="225" src="/images/2motion_plot.png" width="300"/></p><h1>Brython</h1>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
 <h4>Examples:</h4>
 <p style="padding-left: 30px;"><a href="https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d">https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d</a></p>
@@ -1211,7 +1468,7 @@ doc["add1to100"].bind('click', add)
 <p><!-- Brython 程式執行的結果, 都以 brython_div1 作為切入位置 --></p>
 <div id="brython_div1"></div>
 <!-- editor1 結束 --><hr/><!-- ########################################## -->
-<h2>線上繪圖</h2>
+<h1>線上繪圖</h1>
 <p><a href="https://mde.tw/cpnote/content/%E7%B7%9A%E4%B8%8A%E7%B9%AA%E5%9C%96.html?src=https://gist.githubusercontent.com/mdecycu/bb2438a8c0f07c88763f2b889d305246/raw/d38a80ee11b9617584264cbf392509344308427a/w14_1_helloworld.py?src">列印十次hello world</a></p>
 <p>從 1 累加到 100 part2:</p>
 <p><button id="add1to100part2">1 add to 100</button><button id="cango_three_gears">cango_three_gears</button><button id="bsnake">BSnake</button><button id="aitetris">AI Tetris</button><button id="threejsblock">Rotating Block</button></p>
