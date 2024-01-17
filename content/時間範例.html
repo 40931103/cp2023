@@ -2,7 +2,7 @@
         <head>
         <title>cmsite</title>
         <meta charset="utf-8">
-<meta property="head" content="H1">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -142,11 +142,32 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content"> <a href='w5.html'>Next</a> >> w5<br /><h1>About</h1>
-<p><a href="https://github.com/mdecycu/cmsite"> https://github.com/mdecycu/cmsite</a></p>
-<p>40931103周瀞</p>
+    <div id="tipue_search_content">使用者輸入兩個整數後相加的 C 程式範例 << <a href='使用者輸入兩個整數後相加的 C 程式範例.html'>Previous</a> <a href='w6.html'>Next</a> >> w6<br /><h1>時間範例</h1>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;time.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(void)
+{
+    time_t cur_time;   // 宣告 time_t 型別的變數 cur_time 用來存放時間戳
+    char* cur_t_string; // 宣告指標 cur_t_string 用來存放時間轉換後的字串
+    cur_time = time(NULL); // 使用 time 函式獲取當前的時間戳
+    if (cur_time == ((time_t)-1))
+    {
+        (void) fprintf(stderr, "Failure to get the current date and time.\n"); // 如果獲取時間戳失敗，輸出錯誤訊息
+        exit(EXIT_FAILURE);
+    }
+    cur_t_string = ctime(&amp;cur_time); // 將時間戳轉換成字串形式，並存入 cur_t_string
+    if (cur_t_string == NULL)
+    {
+        (void) fprintf(stderr, "Failure to convert the current date and time.\n"); // 如果轉換時間字串失敗，輸出錯誤訊息
+        exit(EXIT_FAILURE);
+    }
+    (void) printf("\n The Current time is : %s \n", cur_t_string); // 輸出格式化後的時間字串
+    exit(EXIT_SUCCESS);
+}</pre>
 <p></p>
-<p><!-- pagebreak --></p><br /> <a href='w5.html'>Next</a> >> w5</div>
+<p><img alt="" height="97" src="./../images/2024-01-17 190540.png" width="300"/></p><br />使用者輸入兩個整數後相加的 C 程式範例 << <a href='使用者輸入兩個整數後相加的 C 程式範例.html'>Previous</a> <a href='w6.html'>Next</a> >> w6</div>
         
     <!-- footer -->
       <div class="container">
