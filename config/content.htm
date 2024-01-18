@@ -183,7 +183,23 @@ int main(void)
 <div class="winkVideoContainerClass"><video autoplay="autoplay" class="winkVideoClass" controls="controls" data-dirname="/cmsimde/static" data-varname="winkVideoData_w11_1a_1" height="630" muted="true" width="1008">
 <source src="/downloads/test.mp4" type="video/mp4"/></video></div>
 <div class="winkVideoContainerClass"></div>
-<h2 class="winkVideoContainerClass">奇數偶數範例</h2><h1>w6</h1>
+<h2>辨別奇數偶數範例</h2>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;   // 包含標準輸入/輸出標頭檔。
+
+void main()
+{
+    int num1, rem1;   // 宣告兩個整數變數 'num1' 和 'rem1'。
+
+    printf("輸入一個整數：");   // 提示使用者輸入一個整數。
+    scanf("%d" , &amp;num1);   // 讀取並將使用者的輸入存儲在 'num1' 中。
+    rem1 = num1 % 2;   // 計算 'num1' 除以 2 的餘數。
+    if (rem1 == 0)   // 檢查餘數是否等於 0。
+        printf("%d 是偶數\n", num1);   // 輸出一條消息，指示 'num1' 是偶數。
+    else
+        printf("%d 是奇數\n", num1);    // 輸出一條消息，指示 'num1' 是奇數。
+}</pre>
+<p><img alt="" height="114" src="/images/2024-01-18 102533.png" width="300"/></p>
+<p></p><h1>w6</h1>
 <h2>ROC Flag練習</h2>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
